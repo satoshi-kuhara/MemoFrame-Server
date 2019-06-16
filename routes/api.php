@@ -24,7 +24,7 @@ Route::get('/message', function (Request $request) {
     //return new MessageResource(Message::find(1));
     if($request->input("key")=="dedededen"){
         $message = Message::orderBy("id","desc")->first();
-        return ["message"=>$message["body"]];
+        return ["message"=>$message["body"],"color"=>$message["color"]];
     }
     return ["message"=>"にんげんだもの。みつを。"];
 });
@@ -32,7 +32,13 @@ Route::get('/message', function (Request $request) {
 Route::post('/message', function (Request $request) {
     if($request->input("key")=="uhehehe"){
         $body = $request->input("body");
-        return Message::create(["body"=>$body,"board_id"=>0]);
+        if($request->has("color")){ 
+            $color = $request->input("color");
+        }
+        else{
+            $color = 0;
+        }
+        return Message::create(["body"=>$body,"board_id"=>0, "color"=>$color]);
     }
     return ["message"=>"白ヤギさんったら読まずに食べた。"];
 });
