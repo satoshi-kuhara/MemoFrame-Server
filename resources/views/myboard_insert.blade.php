@@ -59,7 +59,6 @@
 .radio {
   display: flex;
   flex-direction: column;
-  padding-top:25px;
   border-style: solid;
   width: 20%;
   height: 48px;
