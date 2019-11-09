@@ -38,7 +38,7 @@ class MessageApiController extends Controller
             ]);
 
             if($request->input('from') == "htmlpage"){
-                $redirectPath = './'.env('routing.inputUrl');
+                $redirectPath = "/".config('routing.inputUrl');
                 return redirect($redirectPath);
             }
 
